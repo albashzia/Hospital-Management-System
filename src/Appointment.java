@@ -42,6 +42,16 @@ public class Appointment {
         return this.date;
     }
 
+    public void display(){
+        System.out.println("===Appointment Details===\n");
+        System.out.println("\n---Doctor Details---");
+        System.out.println(doctor.toString());
+        System.out.println("\n---Patient Details---");
+        System.out.println(patient.toString());
+        System.out.println("\n---Appointment Date---");
+        System.out.println(date.toString());
+    }
+
     public String toString(){
         return "Doctor: "+this.doctor.getName() +
                 ", Patient: "+this.patient.getName()+
