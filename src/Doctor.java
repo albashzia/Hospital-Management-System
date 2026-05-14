@@ -34,4 +34,15 @@ public class Doctor extends Person implements Serializable{
                 ", Age: " + super.getAge() +
                 ", Specialization: " + this.getSpecialization();
     }
+
+    public void saveDoctor(Doctor doctor){
+        final String DOCTORS_FILE = "doctors.ser";
+        try {
+            ObjectOutputStream dos = new ObjectOutputStream(new FileOutputStream(DOCTORS_FILE));
+            dos.writeObject(doctor);
+        }
+        catch (Exception e){
+            e.getCause();
+        }
+    }
 }
