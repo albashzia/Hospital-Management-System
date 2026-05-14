@@ -1,7 +1,7 @@
-import javax.print.Doc;
+import java.io.*;
 import java.util.Date;
 
-public class Appointment {
+public class Appointment implements Serializable{
     private Doctor doctor;
     private Patient patient;
     private Date date;
