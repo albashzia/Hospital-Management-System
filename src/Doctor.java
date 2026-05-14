@@ -24,4 +24,12 @@ public class Doctor extends Person{
         super.display();
         System.out.println("Specialization: "+ getSpecialization());
     }
+
+    @Override
+    public String toString() {
+        return "Patient ID: " + super.getId() +
+                ", Name: " + super.getName() +
+                ", Age: " + super.getAge() +
+                ", Specialization: " + this.getSpecialization();
+    }
 }
