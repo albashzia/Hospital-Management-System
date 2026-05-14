@@ -11,4 +11,12 @@ public class Patient extends Person{
         this.illness = illness;
     }
 
+    public void setIllness(String illness){
+        this.illness = illness;
+    }
+
+    public String getIllness(){
+        return this.illness;
+    }
+
 }
