@@ -16,4 +16,17 @@ public class Appointment {
         this.patient = patient;
         this.date = date;
     }
+
+    public void setDoctor(Doctor doctor){
+        this.doctor = doctor;
+    }
+
+    public void setPatient(Patient patient){
+        this.patient = patient;
+    }
+
+    public void setDate(Date date){
+        this.date = date;
+    }
+
 }
