@@ -1,3 +1,4 @@
+import javax.print.Doc;
 import java.util.Date;
 
 public class Appointment {
@@ -29,4 +30,15 @@ public class Appointment {
         this.date = date;
     }
 
+    public Patient getPatient(){
+        return this.patient;
+    }
+
+    public Doctor getDoctor(){
+        return this.doctor;
+    }
+
+    public Date getDate(){
+        return this.date;
+    }
 }
