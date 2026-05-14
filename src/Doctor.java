@@ -18,4 +18,10 @@ public class Doctor extends Person{
     public String getSpecialization(){
         return this.specialization;
     }
+
+    public void display(){
+        System.out.println("===Doctor Details===\n");
+        super.display();
+        System.out.println("Specialization: "+ getSpecialization());
+    }
 }
