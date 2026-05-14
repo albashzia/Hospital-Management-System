@@ -1,6 +1,6 @@
-import javax.swing.text.html.HTMLDocument;
+import java.io.*;
 
-public class Patient extends Person{
+public class Patient extends Person implements Serializable{
     private String illness;
 
     Patient(){
