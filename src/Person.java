@@ -27,4 +27,16 @@ abstract public class Person {
         this.age = age;
     }
 
+    public String getId(){
+        return this.id;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public int getAge(){
+        return this.age;
+    }
+
 }
