@@ -39,4 +39,10 @@ abstract public class Person {
         return this.age;
     }
 
+    public void display(){
+        System.out.println("Id: "+this.getId());
+        System.out.println("Name: "+this.getName());
+        System.out.println("Age: "+this.getAge());
+    }
+
 }
