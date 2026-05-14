@@ -11,4 +11,11 @@ public class Doctor extends Person{
         this.specialization = specialization ;
     }
 
+    public void setSpecialization(String specialization){
+        this.specialization = specialization;
+    }
+
+    public String getSpecialization(){
+        return this.specialization;
+    }
 }
