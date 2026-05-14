@@ -27,4 +27,12 @@ public class Patient extends Person{
         System.out.println("Illness: "+ getIllness());
     }
 
+    @Override
+    public String toString() {
+        return "Patient ID: " + super.getId() +
+                ", Name: " + super.getName() +
+                ", Age: " + super.getAge() +
+                ", Illness: " + this.getIllness();
+    }
+
 }
