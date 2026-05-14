@@ -1,7 +1,7 @@
 abstract public class Person {
-    public String id;
-    public String name;
-    public int age;
+    private String id;
+    private String name;
+    private int age;
 
     Person(){
         id = "0";
