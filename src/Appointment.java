@@ -41,4 +41,10 @@ public class Appointment {
     public Date getDate(){
         return this.date;
     }
+
+    public String toString(){
+        return "Doctor: "+this.doctor.getName() +
+                ", Patient: "+this.patient.getName()+
+                ", Appointment Date: "+this.date;
+    }
 }
