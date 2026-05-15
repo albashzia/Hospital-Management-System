@@ -36,6 +36,19 @@ public class Doctor extends Person implements Serializable{
                 ", Specialization: " + this.getSpecialization();
     }
 
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(this == obj)
+            return true;
+
+        if(obj == null || getClass() != obj.getClass())
+            return false;
+
+        Doctor other = (Doctor) obj;
+        return getId().equals(other.getId());
+    }
+
     public void saveDoctor(Doctor doctor){
         final String DOCTORS_FILE = "doctors.ser";
         ArrayList<Doctor> doctors = new ArrayList<>();

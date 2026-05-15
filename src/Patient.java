@@ -35,6 +35,20 @@ public class Patient extends Person implements Serializable{
                 ", Illness: " + this.getIllness();
     }
 
+    @Override
+    public boolean equals(Object obj){
+
+        if(this == obj)
+            return true;
+
+        if(obj == null || getClass() != obj.getClass())
+            return false;
+
+        Patient other = (Patient) obj;
+
+        return getId().equals(other.getId());
+    }
+
     public void savePatient(Patient patient){
         final String PATIENTS_FILE = "patients.ser";
         try {
