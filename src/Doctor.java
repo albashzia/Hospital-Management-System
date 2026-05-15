@@ -64,13 +64,15 @@ public class Doctor extends Person implements Serializable{
 
     public void readDoctor(){
         final String DOCTORS_FILE = "doctors.ser";
-        try{
-            ObjectInputStream dis  = new ObjectInputStream(new FileInputStream(DOCTORS_FILE));
-            while (true){
-                Doctor doctor = (Doctor) dis.readObject();
-                System.out.println(doctor.toString());
+        try(ObjectInputStream dis = new ObjectInputStream(new FileInputStream(DOCTORS_FILE)))
+        {
+            ArrayList<Doctor> doctors = (ArrayList<Doctor>) dis.readObject();
+            for(Doctor doctor : doctors)
+            {
+                System.out.println(doctor);
             }
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
     }
