@@ -75,13 +75,29 @@ public class Appointment implements Serializable{
                 date.equals(other.date);
     }
 
-    public void saveAppointment(Appointment appointment){
+    public void saveAppointment(Appointment appointment)
+    {
         final String APPOINTMENTS_FILE = "appointments.ser";
-        try {
-            ObjectOutputStream aos = new ObjectOutputStream(new FileOutputStream(APPOINTMENTS_FILE));
-            aos.writeObject(appointment);
+        ArrayList<Appointment> appointments = new ArrayList<>();
+        try(ObjectInputStream ais = new ObjectInputStream(new FileInputStream(APPOINTMENTS_FILE)))
+        {
+            appointments = (ArrayList<Appointment>) ais.readObject();
         }
-        catch (Exception e){
+        catch (FileNotFoundException e)
+        {
+            // first time file doesn't exist
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        appointments.add(appointment);
+        try(ObjectOutputStream aos = new ObjectOutputStream(new FileOutputStream(APPOINTMENTS_FILE)))
+        {
+            aos.writeObject(appointments);
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
     }
