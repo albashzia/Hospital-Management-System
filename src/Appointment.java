@@ -82,7 +82,7 @@ public class Appointment implements Serializable{
             aos.writeObject(appointment);
         }
         catch (Exception e){
-            e.getCause();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -96,7 +96,7 @@ public class Appointment implements Serializable{
             }
         }
         catch (Exception e){
-            e.getCause();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -111,7 +111,7 @@ public class Appointment implements Serializable{
             }
         }
         catch (Exception e){
-            e.getCause();
+            System.out.println(e.getMessage());
         }
 
         for (int i = 0; i < appointments.size(); i++){
@@ -127,7 +127,7 @@ public class Appointment implements Serializable{
             }
         }
         catch (Exception e){
-            e.getCause();
+            System.out.println(e.getMessage());
         }
     }
 }

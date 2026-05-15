@@ -42,7 +42,7 @@ public class Doctor extends Person implements Serializable{
             dos.writeObject(doctor);
         }
         catch (Exception e){
-            e.getCause();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -55,7 +55,7 @@ public class Doctor extends Person implements Serializable{
                 System.out.println(doctor.toString());
             }
         } catch (Exception e) {
-            e.getCause();
+            System.out.println(e.getMessage());
         }
     }
 }

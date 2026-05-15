@@ -42,7 +42,7 @@ public class Patient extends Person implements Serializable{
             pos.writeObject(patient);
         }
         catch(Exception e){
-            e.getCause();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ public class Patient extends Person implements Serializable{
             }
         }
         catch (Exception e){
-            e.getCause();
+            System.out.println(e.getMessage());
         }
     }
 }
