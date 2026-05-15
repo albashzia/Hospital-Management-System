@@ -68,4 +68,18 @@ public class Appointment implements Serializable{
             e.getCause();
         }
     }
+
+    public void readAppointment(){
+        final String APPOINTMENTS_FILE = "appointments.ser";
+        try {
+            ObjectInputStream ais = new ObjectInputStream(new FileInputStream(APPOINTMENTS_FILE));
+            while (true){
+                Appointment appointment = (Appointment) ais.readObject();
+                System.out.println(appointment.toString());
+            }
+        }
+        catch (Exception e){
+            e.getCause();
+        }
+    }
 }
