@@ -59,6 +59,22 @@ public class Appointment implements Serializable{
                 ", Appointment Date: "+this.date;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj)
+            return true;
+
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+
+        Appointment other = (Appointment) obj;
+
+        return doctor.equals(other.doctor) &&
+                patient.equals(other.patient) &&
+                date.equals(other.date);
+    }
+
     public void saveAppointment(Appointment appointment){
         final String APPOINTMENTS_FILE = "appointments.ser";
         try {
