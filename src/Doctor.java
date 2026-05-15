@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class Doctor extends Person implements Serializable{
     private String specialization;
@@ -37,11 +38,26 @@ public class Doctor extends Person implements Serializable{
 
     public void saveDoctor(Doctor doctor){
         final String DOCTORS_FILE = "doctors.ser";
-        try {
-            ObjectOutputStream dos = new ObjectOutputStream(new FileOutputStream(DOCTORS_FILE));
-            dos.writeObject(doctor);
+        ArrayList<Doctor> doctors = new ArrayList<>();
+
+        try(ObjectInputStream dis = new ObjectInputStream(new FileInputStream(DOCTORS_FILE)))
+        {
+            doctors = (ArrayList<Doctor>) dis.readObject();
+
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        doctors.add(doctor);
+
+        try(ObjectOutputStream dos = new ObjectOutputStream(new FileOutputStream(DOCTORS_FILE)))
+        {
+            dos.writeObject(doctors);
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
     }
