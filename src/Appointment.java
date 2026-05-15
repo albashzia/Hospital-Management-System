@@ -142,4 +142,33 @@ public class Appointment implements Serializable{
             System.out.println(e.getMessage());
         }
     }
+    public void updateAppointment(Appointment oldAppointment, Date newDate)
+    {
+        final String APPOINTMENTS_FILE = "appointments.ser";
+        ArrayList<Appointment> appointments = new ArrayList<>();
+
+        try(ObjectInputStream ais = new ObjectInputStream(new FileInputStream(APPOINTMENTS_FILE)))
+        {
+            appointments = (ArrayList<Appointment>) ais.readObject();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+        for(Appointment appt : appointments)
+        {
+            if(appt.equals(oldAppointment))
+            {
+                appt.setDate(newDate);
+            }
+        }
+        try(ObjectOutputStream aos = new ObjectOutputStream(new FileOutputStream(APPOINTMENTS_FILE)))
+        {
+            aos.writeObject(appointments);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 }
