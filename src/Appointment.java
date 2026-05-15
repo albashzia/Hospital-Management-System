@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Appointment implements Serializable{
@@ -76,6 +77,37 @@ public class Appointment implements Serializable{
             while (true){
                 Appointment appointment = (Appointment) ais.readObject();
                 System.out.println(appointment.toString());
+            }
+        }
+        catch (Exception e){
+            e.getCause();
+        }
+    }
+
+    public void deleteAppointment(Appointment appointment){
+        ArrayList<Appointment> appointments = new ArrayList<>();
+        final String APPOINTMENTS_FILE = "appointments.ser";
+        try {
+            ObjectInputStream ais = new ObjectInputStream(new FileInputStream(APPOINTMENTS_FILE));
+            while (true){
+                Appointment appointmentRead = (Appointment) ais.readObject();
+                appointments.add(appointmentRead);
+            }
+        }
+        catch (Exception e){
+            e.getCause();
+        }
+
+        for (int i = 0; i < appointments.size(); i++){
+            if (appointments.get(i).equals(appointment)){
+                appointments.remove(i);
+            }
+        }
+
+        try {
+            ObjectOutputStream aos = new ObjectOutputStream(new FileOutputStream(APPOINTMENTS_FILE));
+            for (Appointment appointment1 : appointments){
+                aos.writeObject(appointment1);
             }
         }
         catch (Exception e){
