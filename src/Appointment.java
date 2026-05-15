@@ -70,8 +70,8 @@ public class Appointment implements Serializable{
 
         Appointment other = (Appointment) obj;
 
-        return doctor.equals(other.doctor) &&
-                patient.equals(other.patient) &&
+        return doctor.getId().equals(other.doctor.getId()) &&
+                patient.getId().equals(other.patient.getId()) &&
                 date.equals(other.date);
     }
 
