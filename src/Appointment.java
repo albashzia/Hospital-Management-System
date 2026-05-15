@@ -57,4 +57,15 @@ public class Appointment implements Serializable{
                 ", Patient: "+this.patient.getName()+
                 ", Appointment Date: "+this.date;
     }
+
+    public void saveAppointment(Appointment appointment){
+        final String APPOINTMENTS_FILE = "appointments.ser";
+        try {
+            ObjectOutputStream aos = new ObjectOutputStream(new FileOutputStream(APPOINTMENTS_FILE));
+            aos.writeObject(appointment);
+        }
+        catch (Exception e){
+            e.getCause();
+        }
+    }
 }
