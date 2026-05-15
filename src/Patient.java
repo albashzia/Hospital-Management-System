@@ -50,8 +50,10 @@ public class Patient extends Person implements Serializable{
         final String PATIENTS_FILE = "patients.ser";
         try {
             ObjectInputStream pis = new ObjectInputStream(new FileInputStream(PATIENTS_FILE));
-            Patient patient = (Patient) pis.readObject();
-            System.out.println(patient.toString());
+            while (true){
+                Patient patient = (Patient) pis.readObject();
+                System.out.println(patient.toString());
+            }
         }
         catch (Exception e){
             e.getCause();
