@@ -35,4 +35,14 @@ public class Patient extends Person implements Serializable{
                 ", Illness: " + this.getIllness();
     }
 
+    public void savePatient(Patient patient){
+        final String PATIENTS_FILE = "patients.ser";
+        try {
+            ObjectOutputStream pos = new ObjectOutputStream(new FileOutputStream(PATIENTS_FILE));
+            pos.writeObject(patient);
+        }
+        catch(Exception e){
+            e.getCause();
+        }
+    }
 }
