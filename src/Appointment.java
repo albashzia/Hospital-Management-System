@@ -121,32 +121,24 @@ public class Appointment implements Serializable{
     }
 
     public void deleteAppointment(Appointment appointment){
-        ArrayList<Appointment> appointments = new ArrayList<>();
         final String APPOINTMENTS_FILE = "appointments.ser";
-        try {
-            ObjectInputStream ais = new ObjectInputStream(new FileInputStream(APPOINTMENTS_FILE));
-            while (true){
-                Appointment appointmentRead = (Appointment) ais.readObject();
-                appointments.add(appointmentRead);
-            }
+
+        ArrayList<Appointment> appointments = new ArrayList<>();
+        try(ObjectInputStream ais = new ObjectInputStream(new FileInputStream(APPOINTMENTS_FILE)))
+        {
+            appointments = (ArrayList<Appointment>) ais.readObject();
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
-
-        for (int i = 0; i < appointments.size(); i++){
-            if (appointments.get(i).equals(appointment)){
-                appointments.remove(i);
-            }
+        appointments.remove(appointment);
+        try(ObjectOutputStream aos = new ObjectOutputStream(new FileOutputStream(APPOINTMENTS_FILE)))
+        {
+            aos.writeObject(appointments);
         }
-
-        try {
-            ObjectOutputStream aos = new ObjectOutputStream(new FileOutputStream(APPOINTMENTS_FILE));
-            for (Appointment appointment1 : appointments){
-                aos.writeObject(appointment1);
-            }
-        }
-        catch (Exception e){
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
     }
