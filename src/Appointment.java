@@ -103,15 +103,19 @@ public class Appointment implements Serializable{
     }
 
     public void readAppointment(){
+
         final String APPOINTMENTS_FILE = "appointments.ser";
-        try {
-            ObjectInputStream ais = new ObjectInputStream(new FileInputStream(APPOINTMENTS_FILE));
-            while (true){
-                Appointment appointment = (Appointment) ais.readObject();
-                System.out.println(appointment.toString());
+
+        try(ObjectInputStream ais = new ObjectInputStream(new FileInputStream(APPOINTMENTS_FILE)))
+        {
+            ArrayList<Appointment> appointments = (ArrayList<Appointment>) ais.readObject();
+            for(Appointment appointment : appointments)
+            {
+                System.out.println(appointment);
             }
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
     }
