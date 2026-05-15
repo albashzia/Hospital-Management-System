@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class Patient extends Person implements Serializable{
     private String illness;
@@ -51,11 +52,29 @@ public class Patient extends Person implements Serializable{
 
     public void savePatient(Patient patient){
         final String PATIENTS_FILE = "patients.ser";
-        try {
-            ObjectOutputStream pos = new ObjectOutputStream(new FileOutputStream(PATIENTS_FILE));
-            pos.writeObject(patient);
+        ArrayList<Patient> patients = new ArrayList<>();
+
+        try(ObjectInputStream pis = new ObjectInputStream(new FileInputStream(PATIENTS_FILE)))
+        {
+            patients = (ArrayList<Patient>) pis.readObject();
         }
-        catch(Exception e){
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        patients.add(patient);
+
+        try(ObjectOutputStream pos = new ObjectOutputStream(new FileOutputStream(PATIENTS_FILE)))
+        {
+            pos.writeObject(patients);
+        }
+        catch (Exception e)
+        {
             System.out.println(e.getMessage());
         }
     }
